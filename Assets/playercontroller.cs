@@ -3,13 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class playercontroller : MonoBehaviour
 {
+    public InventoryObject inventory;
     public PlayerHealth me;
 
     [Header("Projectile & Movement")]
     public GameObject projectile;
+    public int num_shots = 1;
+    public float angle = 0;
     public float initial_speed = 5f;
     private float speed;
-    public float startTimeBtwShots = 0.3f;
+    public float attackspeed = 10/3;
+    public float startTimeBtwShots;
     public float offset;
 
     [Header("Sprites")]
@@ -20,7 +24,7 @@ public class playercontroller : MonoBehaviour
 
     [Header("Dash Visuals")]
     public Sprite dashSprite;
-    public ParticleSystem dashEffectPrefab; // ✅ Particle system for dash effect
+    public ParticleSystem dashEffectPrefab; 
 
     [Header("Dash")]
     public float dash_power = 10f;
@@ -56,6 +60,29 @@ public class playercontroller : MonoBehaviour
             statusBar.SetMaxStamina(max_stamina);
             statusBar.SetStamina(stamina);
         }
+
+        for(int i = 0; i < inventory.container.Count;i++)
+        {
+            int amt = inventory.container[i].amount;
+            ItemData mine = inventory.container[i].item;
+            initial_speed += amt*mine.speed;
+            initial_speed *= 1+  amt * mine.speed_mult;
+
+            attackspeed += amt * mine.attack_speed;
+            attackspeed *= 1  + amt * mine.attack_speed_mult;
+
+            num_shots += amt * mine.num_shots;
+            angle += amt * mine.shot_angle;
+            if (mine.true_angle_mult != 0)
+            {
+                angle *= Mathf.Pow(mine.true_angle_mult, amt);
+            }
+        }
+
+
+
+
+        startTimeBtwShots = 1 / (attackspeed);
     }
 
     void Update()
@@ -101,8 +128,11 @@ public class playercontroller : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, rot));
-                timeBtwShots = startTimeBtwShots;
+                for (int i = 0; i < num_shots; i++)
+                {
+                    Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, rot + angle*(Random.value-.5f)));
+                    timeBtwShots = startTimeBtwShots;
+                }
             }
         }
         else

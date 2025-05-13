@@ -184,6 +184,7 @@ public class boss1 : MonoBehaviour
     }
     void Die() {
         AudioSource.PlayClipAtPoint(gunshot, transform.position, 50);
+        Debug.Log("Found GameController object: " + my_effects.name);
         my_effects.makethingshappen();
         Destroy(gameObject);
     }

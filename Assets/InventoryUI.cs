@@ -3,6 +3,7 @@ using TMPro;
 
 public class PlayerInventoryUI : MonoBehaviour
 {
+    public InventoryObject myInventory;
     [Header("UI Elements")]
     public GameObject inventoryPanel;
     public TMP_Text coinText;
@@ -31,7 +32,7 @@ public class PlayerInventoryUI : MonoBehaviour
         // Update coin count while panel is visible
         if (inventoryPanel != null && inventoryPanel.activeSelf && playerInventory != null && coinText != null)
         {
-            coinText.text = "COINS:" + playerInventory.coins;
+            coinText.text = "COINS:" + myInventory.coins;
         }
     }
 }

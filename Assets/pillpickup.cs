@@ -14,10 +14,10 @@ public class Collectable : MonoBehaviour
                 AudioSource.PlayClipAtPoint(collectSound, transform.position);
 
             // Call a method on the player (optional)
-            PlayerInventory playerInventory = other.gameObject.GetComponent<PlayerInventory>();
-            if (playerInventory != null)
+            playercontroller pc = other.gameObject.GetComponent<playercontroller>();
+            if (pc != null)
             {
-                playerInventory.AddCoins(value); // Replace with your own method if needed
+                pc.inventory.AddCoins(value); // Replace with your own method if needed
             }
 
             // Destroy the collectable object

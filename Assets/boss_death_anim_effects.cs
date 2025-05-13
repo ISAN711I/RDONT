@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class boss_death_anim_effects : MonoBehaviour
 {
     public Image image;
@@ -56,7 +56,7 @@ public class boss_death_anim_effects : MonoBehaviour
             Color color = image.color;
             if (color.a < 1f)
             {
-                color.a += 0.1f * Time.deltaTime;
+                color.a += 0.2f * Time.deltaTime;
                 color.a = Mathf.Clamp01(color.a);
                 image.color = color;
             }
@@ -81,5 +81,12 @@ public class boss_death_anim_effects : MonoBehaviour
     {
         thingshappening = true;
         effectTime = 0f;
+        Invoke("change_scene", 10f);
+    }
+
+    public void change_scene()
+    {
+        SceneManager.LoadScene(3);
+
     }
 }

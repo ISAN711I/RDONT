@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceacedec47d2a4e4fb16a964ce196fd0, type: 3}
+  m_Name: Heroine
+  m_EditorClassIdentifier: 
+  Display: {fileID: -2055801085345394971, guid: 0a5c593cf0617fa4280d469a8b899523, type: 3}
+  type: 0
+  Name: 'Heroine '
+  Item_ID: 5
+  description: 'more health
+
+'
+  damage: 0
+  damage_mult: 0
+  true_damage_mult: 0
+  hp: 30
+  hp_mult: 0
+  revives: 0
+  regen: 0
+  speed: 0
+  speed_mult: 0
+  attack_speed: 0
+  attack_speed_mult: 0
+  ability_charge: 0
+  shot_angle: 0
+  true_angle_mult: 0
+  num_shots: 0
+  shot_speed: 0
+  true_shot_speed_mult: 0
+  mysplitter:
+    prefab: {fileID: 0}
+    issingle: 0
+    num_splits: 0

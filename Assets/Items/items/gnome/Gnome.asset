@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceacedec47d2a4e4fb16a964ce196fd0, type: 3}
+  m_Name: Gnome
+  m_EditorClassIdentifier: 
+  Display: {fileID: 7883726918945323861, guid: d9432e7f608c1cd48a6e9e9a63fdb522, type: 3}
+  type: 0
+  Name: 'Gnome '
+  Item_ID: 3
+  description: 'Extra life
+
+'
+  damage: 0
+  damage_mult: 0
+  true_damage_mult: 0
+  hp: 0
+  hp_mult: 0
+  revives: 1
+  regen: 0
+  speed: 0
+  speed_mult: 0
+  attack_speed: 0
+  attack_speed_mult: 0
+  ability_charge: 0
+  shot_angle: 0
+  true_angle_mult: 0
+  num_shots: 0
+  shot_speed: 0
+  true_shot_speed_mult: 0
+  mysplitter:
+    prefab: {fileID: 0}
+    issingle: 0
+    num_splits: 0

@@ -108,5 +108,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   Freak: Freaky
+  splits: 0
+  splitter: {fileID: 0}
   destroyEffect: {fileID: 6890398031440861554, guid: 9bb2774e1855f4f9f825a89711d1d960, type: 3}
   shootSound: {fileID: 8300000, guid: f4be66ebc17f244d3840a017eb4a055a, type: 3}
+  inventory: {fileID: 11400000, guid: 5658bbd63f60aef429245b2589b4405e, type: 2}
+  multisplit: 0
+  OSL: {fileID: 11400000, guid: c7032468bfbbf564aba8d9e90ff52420, type: 2}
