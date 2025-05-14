@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Display: {fileID: 8957324059118975939, guid: 72b1c14ae9c8b9a469716171fad94472, type: 3}
   type: 0
-  Name: watermelon seeds
+  Name: 'watermelon seeds '
   Item_ID: 14
   description: High shot speed and Damage, decreases attack speed
   damage: 0
@@ -37,4 +37,5 @@ MonoBehaviour:
   mysplitter:
     prefab: {fileID: 0}
     issingle: 0
+    triggeroncontact: 0
     num_splits: 0

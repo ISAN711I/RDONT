@@ -9,6 +9,7 @@ public class splitter_functions : MonoBehaviour
     {
         if (sl == null || curr_split + 1 >= sl.splitter_list.Count)
         {
+            Debug.LogWarning("No further splitter. Destroying.");
             Destroy(gameObject);
             return;
         }
@@ -18,29 +19,21 @@ public class splitter_functions : MonoBehaviour
 
         if (nextsplitter.prefab == null)
         {
+            Debug.LogWarning("Next splitter or its prefab is null. Destroying.");
             Destroy(gameObject);
             return;
         }
 
-        if (!nextsplitter.issingle)
-        {
-            for (int i = 0; i < nextsplitter.num_splits * sl.splitter_list[curr_split].amount; i++)
-            {
-                GameObject next = Instantiate(nextsplitter.prefab, transform.position, transform.rotation);
-                splitter_functions sf = next.GetComponent<splitter_functions>();
-                if (sf != null)
-                {
-                    sf.curr_split = curr_split + 1;
-                }
-            }
-        }
-        else
+        int spawnCount = nextsplitter.issingle ? 1 : nextsplitter.num_splits * sl.splitter_list[curr_split].amount;
+
+        for (int i = 0; i < spawnCount; i++)
         {
             GameObject next = Instantiate(nextsplitter.prefab, transform.position, transform.rotation);
             splitter_functions sf = next.GetComponent<splitter_functions>();
             if (sf != null)
             {
                 sf.curr_split = curr_split + 1;
+                sf.sl = sl; // Pass reference
             }
         }
 

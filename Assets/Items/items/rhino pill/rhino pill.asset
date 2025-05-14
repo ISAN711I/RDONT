@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Display: {fileID: 6007447432429056385, guid: 4b4115b2fdcead749887f01c89814f70, type: 3}
   type: 0
-  Name: Rhino Pill
+  Name: 'Rhino Pill '
   Item_ID: 10
   description: Increases damage by 0.3 at a cost for speed
   damage: 0.3
@@ -37,4 +37,5 @@ MonoBehaviour:
   mysplitter:
     prefab: {fileID: 0}
     issingle: 0
+    triggeroncontact: 0
     num_splits: 0

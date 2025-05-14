@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems; // Needed for pointer events
 using TMPro; // If you're using TextMeshPro
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 public class Shop_Item_behaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public InventoryObject player_inventory;
@@ -19,6 +19,8 @@ public class Shop_Item_behaviour : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public TMP_Text descriptionText; // Assign this in the inspector
     public TMP_Text nameText;
+
+    public bool is_starter;
     void Start()
     {
         float rng = Random.value;
@@ -49,26 +51,45 @@ public class Shop_Item_behaviour : MonoBehaviour, IPointerEnterHandler, IPointer
         }
 
         GetComponent<Image>().sprite = my_item.Display;
-        nameText.text = my_item.Name + price;
+        if (!is_starter)
+        {
+            nameText.text = my_item.Name + price;
+        } else
+        {
+            nameText.text = my_item.Name;
+            price = 0;
+        }
     }
 
     public void buyItem()
     {
-        if (player_inventory.coins >= price)
+        if (!is_starter)
         {
-            player_inventory.AddCoins(-price);
+            if (player_inventory.coins >= price)
+            {
+                player_inventory.AddCoins(-price);
 
-            if(my_item.mysplitter.prefab != null)
+                if (my_item.mysplitter.prefab != null)
+                {
+                    msl.AddSplitter(my_item.mysplitter);
+                }
+
+                player_inventory.AddItem(my_item, 1);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Can't afford");
+            }
+        } else
+        {
+            if (my_item.mysplitter.prefab != null)
             {
                 msl.AddSplitter(my_item.mysplitter);
             }
 
             player_inventory.AddItem(my_item, 1);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("Can't afford");
+            SceneManager.LoadScene(1);
         }
     }
 

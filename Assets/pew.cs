@@ -69,9 +69,10 @@ public class pew : MonoBehaviour
                 {
                     multisplit = true;
                 }
+                splits = OSL.splitter_list[0].mysplitter.num_splits * OSL.splitter_list[0].amount;
             }
         }
-        splits = OSL.splitter_list[0].mysplitter.num_splits * OSL.splitter_list[0].amount ;
+        
     }
 
     private void Update()
@@ -121,27 +122,40 @@ public class pew : MonoBehaviour
 
     void DestroyProjectile(bool isfromimpact)
     {
-        configured_splitters curr = OSL.splitter_list[0];
-        if (curr.amount != 0)
+
+
+        if (OSL.splitter_list.Count > 0)
         {
-            if (isfromimpact)
+            configured_splitters curr = OSL.splitter_list[0];
+            if (curr.amount != 0)
             {
-                if (curr.mysplitter.triggeroncontact)
+                if (isfromimpact)
                 {
-                    triggersplitter();
+                    if (curr.mysplitter.triggeroncontact)
+                    {
+                        triggersplitter();
+                    }
+                    else
+                    {
+                        if (destroyEffect != null)
+                        {
+                            Instantiate(destroyEffect, transform.position, Quaternion.identity);
+                        }
+                        Destroy(gameObject);
+                    }
                 }
                 else
                 {
-                    if (destroyEffect != null)
-                    {
-                        Instantiate(destroyEffect, transform.position, Quaternion.identity);
-                    }
-                    Destroy(gameObject);
+                    triggersplitter();
                 }
             }
             else
             {
-                triggersplitter();
+                if (destroyEffect != null)
+                {
+                    Instantiate(destroyEffect, transform.position, Quaternion.identity);
+                }
+                Destroy(gameObject);
             }
         }
         else
@@ -150,7 +164,9 @@ public class pew : MonoBehaviour
             {
                 Instantiate(destroyEffect, transform.position, Quaternion.identity);
             }
+
             Destroy(gameObject);
+
         }
     }
 
@@ -161,13 +177,13 @@ public class pew : MonoBehaviour
             for (int i = 0; i < splits; i++)
             {
                 GameObject init = Instantiate(OSL.splitter_list[0].mysplitter.prefab, transform.position, transform.rotation);
-                init.GetComponent<splitter_functions>().curr_split = 1;
+                init.GetComponent<splitter_functions>().curr_split = 0;
             }
         }
         else if (splits != 0)
         {
             GameObject init = Instantiate(OSL.splitter_list[0].mysplitter.prefab, transform.position, transform.rotation);
-            init.GetComponent<splitter_functions>().curr_split = 1;
+            init.GetComponent<splitter_functions>().curr_split = 0;
         }
 
         if (destroyEffect != null)

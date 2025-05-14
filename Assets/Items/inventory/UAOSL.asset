@@ -12,16 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96b00d9950de134daca97f9e5109916, type: 3}
   m_Name: UAOSL
   m_EditorClassIdentifier: 
-  splitter_list:
-  - mysplitter:
-      prefab: {fileID: 4577145192828350319, guid: 3d4400fecd97ff94590ccdea6b57e202, type: 3}
-      issingle: 1
-      triggeroncontact: 0
-      num_splits: 1
-    amount: 1
-  - mysplitter:
-      prefab: {fileID: 8617733437251477725, guid: 5265d42ecad71cb4bac0afcfa9f82ce0, type: 3}
-      issingle: 0
-      triggeroncontact: 1
-      num_splits: 10
-    amount: 1
+  splitter_list: []
